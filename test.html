@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSIR NET Life Science Mock Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .section {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        #timer {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: red;
+            text-align: center;
+        }
+        .btn {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+        }
+        .palette-item {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .palette-item.answered {
+            background-color: #28a745;
+        }
+        .palette-item.review {
+            background-color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSIR NET Life Science Mock Test</h1>
+    <p id="timer">180:00</p>
+
+    <!-- Question Palette -->
+    <div id="question-palette" style="text-align: center;">
+        <!-- JavaScript will dynamically generate palette here -->
+    </div>
+
+    <!-- Part A -->
+    <div class="section">
+        <h2>Part A: General Science, Quantitative Reasoning & Research Aptitude</h2>
+        <!-- 20 Questions for Part A -->
+        <!-- Repeat this block for each question -->
+        <div class="question">
+            <p>1. What is the result of 5 + 3?</p>
+            <input type="radio" name="q1" value="A"> A. 6<br>
+            <input type="radio" name="q1" value="B"> B. 8<br>
+            <input type="radio" name="q1" value="C"> C. 10<br>
+            <input type="radio" name="q1" value="D"> D. 12<br>
+        </div>
+        <!-- Repeat similar blocks for questions 2 to 20 for Part A -->
+    </div>
+
+    <!-- Part B -->
+    <div class="section">
+        <h2>Part B: Subject-Specific MCQs</h2>
+        <!-- 50 Questions for Part B -->
+        <!-- Repeat this block for each question -->
+        <div class="question">
+            <p>1. What is the primary function of mitochondria?</p>
+            <input type="radio" name="bq1" value="A"> A. Protein synthesis<br>
+            <input type="radio" name="bq1" value="B"> B. Energy production<br>
+            <input type="radio" name="bq1" value="C"> C. DNA replication<br>
+            <input type="radio" name="bq1" value="D"> D. Waste removal<br>
+        </div>
+        <!-- Repeat similar blocks for questions 2 to 50 for Part B -->
+    </div>
+
+    <!-- Part C -->
+    <div class="section">
+        <h2>Part C: Analytical Questions</h2>
+        <!-- 75 Questions for Part C -->
+        <!-- Repeat this block for each question -->
+        <div class="question">
+            <p>1. Which graph best represents the growth of a bacterial population over time?</p>
+            <!-- Add an image to this question -->
+            <img src="path-to-your-image.jpg" alt="Bacterial Growth Graph" style="width: 300px; height: 200px;">
+            <input type="radio" name="cq1" value="A"> A. Linear growth<br>
+            <input type="radio" name="cq1" value="B"> B. Exponential growth<br>
+            <input type="radio" name="cq1" value="C"> C. Logistic growth<br>
+            <input type="radio" name="cq1" value="D"> D. Declining growth<br>
+        </div>
+        <!-- Repeat similar blocks for questions 2 to 75 for Part C -->
+    </div>
+
+    <button class="btn" onclick="submitTest()">Submit Test</button>
+
+    <script>
+        // Timer Logic
+        let timeLeft = 180 * 60; // 180 minutes in seconds
+        const timerElement = document.getElementById("timer");
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(timerInterval);
+                submitTest(); // Auto-submit when time runs out
+            }
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+
+        // Question Palette Logic
+        const questionPalette = document.getElementById("question-palette");
+        const totalQuestions = 145; // 145 questions in total
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const paletteItem = document.createElement("div");
+            paletteItem.className = "palette-item";
+            paletteItem.textContent = i;
+            paletteItem.onclick = () => navigateToQuestion(i);
+            questionPalette.appendChild(paletteItem);
+        }
+
+        function navigateToQuestion(qNum) {
+            alert("Navigating to question " + qNum); // Replace with actual scroll logic if needed
+        }
+
+        // Submission Logic
+        function submitTest() {
+            alert("Test submitted!");
+            // Implement your logic to process the test data and display the result
+        }
+    </script>
+</body>
+</html>
